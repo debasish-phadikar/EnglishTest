@@ -12,7 +12,7 @@ hide_st_style = """
             header {visibility: hidden;}
             </style>
             """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 
 # --- 1. SETUP & SECURITY ---
@@ -30,7 +30,7 @@ else:
 
 
 st.set_page_config(page_title="Expert English Institute", page_icon="🎓")
-
+st.markdown(hide_st_style, unsafe_allow_html=True)
 # --- 2. LOGIN SYSTEM ---
 # Simple hardcoded users (In real life, this would be a database)
 USERS = {
