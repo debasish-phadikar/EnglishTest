@@ -53,7 +53,7 @@ if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
 def login_page():
-    st.title("🔐 Student Portal Login")
+    st.title("🔐 Student Portal Login:")
     st.write("Welcome to the Expert English Institute.")
     
     username = st.text_input("Username")
