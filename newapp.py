@@ -20,22 +20,32 @@ else:
 
 st.set_page_config(page_title="Expert English Institute", page_icon="🎓")
 
-# --- HIDE STREAMLIT STYLE (STRONGER VERSION) ---
-# --- HIDE STREAMLIT STYLE (UPDATED) ---
+# --- HIDE STREAMLIT STYLE ---
 hide_st_style = """
     <style>
-    /* 1. Remove the top header line (where the "Private" badge sits) */
-    header {visibility: hidden;}
-    [data-testid="stHeader"] {visibility: hidden; display: none;}
-    
-    /* 2. Remove the hamburger menu */
-    #MainMenu {visibility: hidden;}
-    
-    /* 3. Remove the footer */
-    footer {visibility: hidden;}
-    
-    /* 4. Remove the "Deploy" button specifically */
-    .stDeployButton {display:none;}
+    /* 1. Remove the entire top header bar */
+    header[data-testid="stHeader"] {
+        visibility: hidden;
+        display: none;
+    }
+
+    /* 2. Hide the "Manage App" button (The Red Crown) */
+    .stAppDeployButton {
+        visibility: hidden;
+        display: none;
+    }
+
+    /* 3. Hide the Hamburger Menu */
+    [data-testid="stToolbar"] {
+        visibility: hidden;
+        display: none;
+    }
+
+    /* 4. Hide the footer "Made with Streamlit" */
+    footer {
+        visibility: hidden;
+        display: none;
+    }
     </style>
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
