@@ -1,4 +1,3 @@
 [client]
 toolbarMode = "viewer"
-[ui]
-hideTopBar = true
+showSidebarNavigation = false
