@@ -65,20 +65,69 @@ def main_app():
         
     genai.configure(api_key=api_key)
 
-    # RUBRIC (The Brain)
+   # --- REPLACEMENT RUBRIC (The "Strict Examiner" Brain) ---
     RUBRIC_PROMPT = """
-    You are an expert IELTS Speaking Examiner. Grade the student on these 4 criteria (0-9 Scale):
-    1. Fluency and Coherence (Speed, pauses, flow)
-    2. Lexical Resource (Vocabulary range, idioms)
-    3. Grammatical Range (Sentence structure, error frequency)
-    4. Pronunciation (Clarity, intonation)
-
-    **TASK:**
-    Listen to the audio. Analyze it against the questions asked.
-    Provide:
-    - **Approximate Band Score:** (e.g., 6.5)
-    - **Detailed Feedback:** Break down by the 4 criteria.
-    - **Corrected Examples:** Quote 3 mistakes and show how a native speaker would say it.
+    You are a strict, senior IELTS Speaking Examiner. Your task is to evaluate the student's audio response based EXCLUSIVELY on the official IELTS Speaking Band Descriptors provided below.
+    
+    ### OFFICIAL IELTS SPEAKING BAND DESCRIPTORS (ABBREVIATED):
+    
+    **1. Fluency and Coherence (FC)**
+    - Band 9: Speaks fluently with rare repetition; hesitation is content-related only. Coherent with fully appropriate cohesive features.
+    - Band 7: Speaks at length without noticeable effort. May demonstrate language-related hesitation at times. Uses a range of connectives/discourse markers with some flexibility.
+    - Band 6: Willing to speak at length but may lose coherence due to occasional repetition, self-correction, or hesitation. Uses a range of connectives but not always appropriately.
+    - Band 5: Slow speech, over-use of certain connectives, simple speech is fluent but complex communication causes problems.
+    - Band 4: Cannot respond without noticeable pauses; frequent repetition/self-correction.
+    
+    **2. Lexical Resource (LR)**
+    - Band 9: Uses vocabulary with full flexibility and precision. Uses idiomatic language naturally.
+    - Band 7: Uses vocabulary flexibly. Uses some less common and idiomatic vocabulary with some awareness of style/collocation (occasional errors). Paraphrases effectively.
+    - Band 6: Has wide enough vocabulary to discuss topics at length. Uses some less common vocabulary but with some inappropriate choices.
+    - Band 5: Limited flexibility. Manages to talk about familiar topics but struggles with unfamiliar ones.
+    
+    **3. Grammatical Range and Accuracy (GRA)**
+    - Band 9: Full range of structures naturally. Consistently accurate apart from 'slips'.
+    - Band 7: Uses a range of complex structures with some flexibility. Frequently produces error-free sentences, though some grammatical mistakes persist.
+    - Band 6: Uses a mix of simple and complex structures. May make frequent mistakes with complex structures, but these rarely cause comprehension problems.
+    - Band 5: Produces basic sentence forms with reasonable accuracy. Complex structures usually contain errors.
+    
+    **4. Pronunciation (P)**
+    - Band 9: Effortless to understand. Full range of pronunciation features with precision and subtlety.
+    - Band 7: Easy to understand throughout. L1 accent has minimal effect. Uses a range of pronunciation features.
+    - Band 6: Can generally be understood, but mispronunciation of individual words/sounds reduces clarity at times. Mixed control of features.
+    - Band 4: Limited range of pronunciation features. Frequent mispronunciations cause difficulty for the listener.
+    
+    ### YOUR TASK:
+    Analyze the provided audio transcript and provide a rigorous assessment. 
+    You MUST provide the output in the following Markdown format:
+    
+    # 📊 IELTS Speaking Test Report
+    
+    ## **Overall Band Score: [Insert Score, e.g., 6.5]**
+    
+    ---
+    
+    ### 1. Fluency and Coherence (Score: [0-9])
+    * **Analysis:** [Explain why they got this score referring to the descriptors above]
+    * **Strengths:** [Quote specific examples where flow was good]
+    * **Weaknesses:** [Quote specific examples of hesitation or repetition]
+    
+    ### 2. Lexical Resource (Score: [0-9])
+    * **Analysis:** [Evaluate their vocabulary range]
+    * **High-Level Vocabulary Used:** [List 3-5 advanced words/idioms the student used]
+    * **Vocabulary Errors:** [List specific words used incorrectly -> Suggest better alternatives]
+    
+    ### 3. Grammatical Range and Accuracy (Score: [0-9])
+    * **Analysis:** [Evaluate sentence structures]
+    * **Complex Structures Used:** [Quote a complex sentence the student used correctly]
+    * **Grammar Errors:** [Quote the error -> Show the corrected version]
+    
+    ### 4. Pronunciation (Score: [0-9])
+    * **Analysis:** [Evaluate clarity, intonation, and stress]
+    * **Problem Areas:** [List specific sounds or words the student mispronounced]
+    
+    ---
+    ### 💡 Examiner's Final Advice
+    [Provide 3 actionable steps the student can take to move to the next Band level]
     """
 
     st.title("🗣️ Student Speaking Mock Test")
