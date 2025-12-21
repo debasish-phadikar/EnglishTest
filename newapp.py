@@ -4,17 +4,6 @@ import tempfile
 import os
 from dotenv import load_dotenv
 
-# --- HIDE STREAMLIT STYLE ---
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
-
 # --- 1. SETUP & SECURITY ---
 # Load environment variables from .env file
 #load_dotenv()
@@ -30,6 +19,26 @@ else:
 
 
 st.set_page_config(page_title="Expert English Institute", page_icon="🎓")
+
+# --- HIDE STREAMLIT STYLE (STRONGER VERSION) ---
+hide_st_style = """
+    <style>
+    /* 1. Hide the hamburger menu (top right) */
+    #MainMenu {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden; display: none;}
+
+    /* 2. Hide the "Made with Streamlit" footer */
+    footer {visibility: hidden;}
+    
+    /* 3. Hide the top colored header line */
+    header {visibility: hidden;}
+    [data-testid="stDecoration"] {visibility: hidden; display: none;}
+    
+    /* 4. Hide the "Manage App" / "Deploy" button */
+    .stDeployButton {display:none;}
+    </style>
+"""
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # --- 2. LOGIN SYSTEM ---
 # Simple hardcoded users (In real life, this would be a database)
