@@ -4,6 +4,17 @@ import tempfile
 import os
 from dotenv import load_dotenv
 
+# --- HIDE STREAMLIT STYLE ---
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
+
 # --- 1. SETUP & SECURITY ---
 # Load environment variables from .env file
 #load_dotenv()
