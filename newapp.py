@@ -6,10 +6,17 @@ from dotenv import load_dotenv
 
 # --- 1. SETUP & SECURITY ---
 # Load environment variables from .env file
-load_dotenv()
+#load_dotenv()
 
 # Fetch API Key securely
-api_key = os.getenv("GOOGLE_API_KEY")
+#api_key = os.getenv("GOOGLE_API_KEY")
+# Streamlit automatically loads the secrets file
+if "GOOGLE_API_KEY" in st.secrets:
+    api_key = st.secrets["GOOGLE_API_KEY"]
+else:
+    st.error("Missing API Key. Please set it in .streamlit/secrets.toml")
+    st.stop()
+
 
 st.set_page_config(page_title="Expert English Institute", page_icon="🎓")
 
