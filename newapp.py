@@ -25,7 +25,8 @@ st.set_page_config(page_title="Expert English Institute", page_icon="🎓")
 USERS = {
     "student": "english123",
     "demo": "pass123",
-    "admin": "admin123"
+    "admin": "admin123",
+    "test":"test123"
 }
 
 if 'logged_in' not in st.session_state:
